@@ -7,6 +7,8 @@ import express from 'express';
 const app = express()
 import connectDB from "./db/index.js"
 
+app.use(express.json())
+
 
 import router from "./routes/user.routes.js"
 app.use("/api/v1/users", router);
