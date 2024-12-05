@@ -4,10 +4,14 @@ import dotenv from "dotenv"
 // import mongoose from "mongoose";
 // import { DB_NAME } from "./constants.js"
 import express from 'express';
-const app = express()
 import connectDB from "./db/index.js"
+import cookieParser from 'cookie-parser'
+
+const app = express()
+
 
 app.use(express.json())
+app.use(cookieParser())
 
 
 import router from "./routes/user.routes.js"

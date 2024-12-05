@@ -1,31 +1,30 @@
-/*
-
-const asyncHandler = (requestHandler) => {
-    return (req, res, next) => {
-        Promise.resolve(requestHandler(req, res, next))
-            .catch((err) => next(err));  // Catch any errors and forward to next middleware
-    };
-};
-
-export { asyncHandler };
-
-*/
+// const asyncHandler = (requestHandler) => {
+//     return (req, res, next) => {
+//         Promise.resolve(requestHandler(req, res, next)).catch((err) => next(err))
+//     }
+// }
 
 
-// this is a Try-Catch Method 
+// export { asyncHandler }
 
 
-const asyncHandler = (fn) => async (req, res, next) =>  {
+
+
+// const asyncHandler = () => {}
+// const asyncHandler = (func) => () => {}
+// const asyncHandler = (func) => async () => {}
+
+
+const asyncHandler = (fn) => async (req, res, next) => {
     try {
         await fn(req, res, next)
     } catch (error) {
-        res.status(err.code || 500).json({
+        res.status(error.code || 500).json({
             success: false,
-            message: err.message
+            message: error.message
         })
     }
 }
 
-export { asyncHandler };
 
-
+export { asyncHandler }
